@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zyraa Order History</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Sansation:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="menu">
+        <button id="menu-btn" class="menu-btn" style="padding:0px; background:none; border:none; cursor:pointer;">
+          <span class="bar" style="margin-bottom: 5px;"></span>
+          <span class="bar" style="margin-bottom: 5px;"></span>
+          <span class="bar" style="margin-bottom: 5px;"></span>
+        </button>
+       </div>
+    <div id="sidebar" class="sidebar">
+    <a href="#">Home</a>
+    <a href="#">Services</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <a href="#">Add collections</a>
+     <a href="#">Add to cart</a>
+  </div>
+
+  <!-- Overlay -->
+  <div id="overlay" class="overlay"></div>
+
+  <!-- Main Content -->
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    menuBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+      overlay.classList.toggle('active');
+    });
+
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+    </script>
+    <div class="logo">ZYRAA</div>
+    <div class="collection">Add to collection</div>
+  </header>
+  <section class="order-history-header">
+    <h2>Order History</h2>
+  </section>
+     <div class="menu">
+   <div class="by-short">
+      Sort by
+       <button id="by-short" class="menu-btn" style="padding:0; background:none; border:none; cursor:pointer;">
+          <span class="bar" style="margin-bottom: 5px;"></span>
+          <span class="bar" style="margin-bottom: 5px;"></span>
+          <span class="bar" style="margin-bottom: 5px;"></span>
+        </button>
+    </div>
+       <div id="dropdown" class="dropdown">
+      <a href="#">Newest</a>
+      <a href="#">Oldest</a>
+      <a href="#">Price: Low to High</a>
+      <a href="#">Price: High to Low</a>
+    </div>
+  </div>
+
+  <script>
+    const btn = document.getElementById('by-short');
+    const dropdown = document.getElementById('dropdown');
+
+    btn.addEventListener('click', () => {
+      dropdown.classList.toggle('active');
+    });
+
+    // Close dropdown if clicked outside
+    window.addEventListener('click', (e) => {
+      if (!e.target.closest('.menu')) {
+        dropdown.classList.remove('active');
+      }
+    });
+  </script>
+    </div>
+<div id="orders-left" class="orders-column"></div>
+<div id="orders-right" class="orders-column"></div>
+  <section id="orders"></section>
+
+  <script src="script.js"></script>
+</body>
+</html>
